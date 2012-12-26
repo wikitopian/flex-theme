@@ -174,7 +174,7 @@ function jqmobile_theme_options_render_page() {
 		</ul>
 
 		<?php /*
-		<iframe id="jqmobile_theme_preview" width="320" height="480" src="<?php echo get_stylesheet_directory_uri()."/themes/preview.php"?>"></iframe>
+		<iframe id="jqmobile_theme_preview" width="320" height="480" src="<?php echo get_template_directory_uri()."/themes/preview.php"?>"></iframe>
 
 		*/ ?>
 		
@@ -325,7 +325,7 @@ function jqmobile_theme_options_validate( $input ) {
 
 		if ($target_name) {
 
-			$target_dir = get_stylesheet_directory().'/themes/'.$target_name;
+			$target_dir = get_template_directory().'/themes/'.$target_name;
 			
 			if ( $wp_filesystem->is_dir($target_dir) )
 				$wp_filesystem->delete($target_dir, true);
