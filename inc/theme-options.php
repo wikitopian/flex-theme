@@ -371,7 +371,7 @@ function jqmobile_enqueue_color_scheme() {
 
 	do_action( 'jqmobile_enqueue_color_scheme', $color_scheme );
 }
-add_action( 'wp_enqueue_scripts', 'jqmobile_enqueue_color_scheme' );
+add_action( 'wp_print_styles', 'jqmobile_enqueue_color_scheme' );
 
 function jqmobile_layout_classes( $existing_classes ) {
 	$options = jqmobile_get_theme_options();
