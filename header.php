@@ -4,7 +4,7 @@
 	<meta charset="<?php bloginfo('charset'); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1.0, user-scalable=0" />
 	<?php if (is_search()): ?><meta name="robots" content="noindex, nofollow" /><?php endif; ?>
-	<title><?php wp_title('&laquo;', true, 'right'); ?> <?php bloginfo('name'); ?></title>
+	<title><?php wp_title(); ?></title>
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 	<script type="text/javascript">
@@ -19,6 +19,6 @@
 	<div data-role="page" id="jqm-home"<?php jqmobile_ui('body');?>>
 		<div data-role="header"<?php jqmobile_ui('header');?>>
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" data-icon="home" data-iconpos="notext"><?php bloginfo( 'name' ); ?></a>
-			<h1 role="heading"><?php if (is_home()) echo get_bloginfo('name'). " | ". get_bloginfo('description'); else wp_title('',true); ?></h1>
+			<h1 role="heading"><?php wp_title(); ?></h1>
 		</div>
 		<div data-role="content">

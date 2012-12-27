@@ -251,4 +251,28 @@ function jquerymobile_comment( $comment, $args, $depth ) {
 			break;
 	endswitch;
 }
+
+function jquerymobile_title_filter( $title, $sep, $seplocation ) {
+	// account for $seplocation
+	$left_sep = ( $seplocation != 'right' ? ' ' . $sep . ' ' : '' );
+	$right_sep = ( $seplocation != 'right' ? '' : ' ' . $sep . ' ' );
+
+	// get special page type (if any)
+	if( is_category() ) $page_type = $left_sep . 'Category' . $right_sep;
+	elseif( is_tag() ) $page_type = $left_sep . 'Tag' . $right_sep;
+	elseif( is_author() ) $page_type = $left_sep . 'Author' . $right_sep;
+	elseif( is_archive() || is_date() ) $page_type = $left_sep . 'Archives'. $right_sep;
+	else $page_type = '';
+
+	// get the page number
+	if( get_query_var( 'paged' ) ) $page_num = $left_sep. get_query_var( 'paged' ) . $right_sep; // on index
+	elseif( get_query_var( 'page' ) ) $page_num = $left_sep . get_query_var( 'page' ) . $right_sep; // on single
+	else $page_num = '';
+
+	// concoct and return title
+	if( !is_feed() ) return get_bloginfo( 'name' ) . $page_type . $title . $page_num;
+	else return $old_title;
+}
+add_filter( 'wp_title', 'jquerymobile_title_filter' );
+
 ?>
