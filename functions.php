@@ -252,7 +252,7 @@ function jquerymobile_comment( $comment, $args, $depth ) {
 	endswitch;
 }
 
-function jquerymobile_title_filter( $title, $sep, $seplocation ) {
+function jquerymobile_title_filter( $title, $sep = null, $seplocation = null ) {
 	// account for $seplocation
 	$left_sep = ( $seplocation != 'right' ? ' ' . $sep . ' ' : '' );
 	$right_sep = ( $seplocation != 'right' ? '' : ' ' . $sep . ' ' );
