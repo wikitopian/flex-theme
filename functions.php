@@ -1,5 +1,7 @@
 <?php
 
+require_once( 'inc/flex-theme.php' );
+
 add_action( 'after_setup_theme', 'jqmobile_setup' );
 add_filter('show_admin_bar', '__return_false');
 
