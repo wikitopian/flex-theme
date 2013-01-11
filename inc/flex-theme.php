@@ -4,6 +4,7 @@ class Flex_Theme {
 	private $dir;
 	private $content_width;
 	private $settings;
+	private $layout;
 
 	public function __construct() {
 		$this->dir = get_template_directory_uri();
@@ -17,6 +18,13 @@ class Flex_Theme {
 
 	public function install() {
 		$this->settings = array(
+			'color_scheme' => 'default',
+			'mobile_layout' => 'content-sidebar',
+			'ui' => array()
+		);
+		put_option( 'flex-theme_settings', $this->settings );
+
+		$this->layout = array(
 			'body' => array(
 				'label' => __( 'Body', 'jqmobile' ),
 				'default' => 'c'
@@ -54,15 +62,19 @@ class Flex_Theme {
 				'default' => 'c'
 			),
 		);
-		put_option( 'flex-theme_settings', $this->settings );
+		put_option( 'flex-theme_layout', $this->layout );
 	}
 
 	public function uninstall() {
 		delete_option( 'flex-theme_settings' );
+		delete_option( 'flex-theme_layout' );
 	}
 
 	public function init() {
-		if( !$this->settings = get_option( 'flex-theme_settings' ) ) {
+		if( !get_option( 'flex-theme_settings' ) ) {
+			$this->settings = get_option( 'flex-theme_settings' );
+			$this->layout   = get_option( 'flex-theme_layout' );
+		} else {
 			$this->install();
 		}
 
@@ -101,11 +113,27 @@ class Flex_Theme {
 	}
 
 	public function do_scripts() {
-
+		wp_enqueue_script(
+			'theme-script',
+			"{$this->dir}/script.js",
+			array( 'jquery' )
+		);
+		wp_enqueue_script(
+			'jquerymobile',
+			'http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js',
+			array( 'jquery' )
+		);
 	}
 
 	public function do_print_styles() {
-
+		wp_enqueue_style(
+			'jquerymobile',
+			'http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css'
+		);
+		wp_enqueue_style(
+			'custom',
+			"{$this->dir}/style/custom.css",
+		);
 	}
 
 	public function do_admin_print_styles() {

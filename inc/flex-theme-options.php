@@ -6,7 +6,7 @@ if ( ! function_exists( 'jqmobile_setup' ) ) {
 		require( dirname( __FILE__ ) . '/inc/theme-options.php' );
 	}
 }
-
+/*
 function jqmobile_get_default_theme_options() {
 	$default_theme_options = array(
 		'color_scheme' => 'default',
@@ -16,5 +16,5 @@ function jqmobile_get_default_theme_options() {
 
 	return apply_filters( 'jqmobile_default_theme_options', $default_theme_options );
 }
-
+*/
 ?>

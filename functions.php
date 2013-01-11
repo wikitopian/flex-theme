@@ -5,72 +5,6 @@ require_once( 'inc/flex-theme-options.php' );
 
 require( dirname( __FILE__ ) . '/inc/classes.php' );
 
-if ( ! function_exists( 'jqmobile_setup' ) ) {
-	function jqmobile_setup() {
-		require( dirname( __FILE__ ) . '/inc/theme-options.php' );
-	}
-}
-
-$content_width = 600;
-
-
-function jqmobile_get_default_theme_options() {
-	$default_theme_options = array(
-		'color_scheme' => 'default',
-		'mobile_layout' => 'content-sidebar',
-		'ui' => array()
-	);
-
-	return apply_filters( 'jqmobile_default_theme_options', $default_theme_options );
-}
-
-function jqmobile_mobile_entities() {
-	$layout_options = array(
-		'body' => array(
-			'label' => __( 'Body', 'jqmobile' ),
-			'default' => 'c'
-		),
-		'header' => array(
-			'label' => __( 'Header', 'jqmobile' ),
-			'default' => 'a'
-		),
-		'footer' => array(
-			'label' => __( 'Footer', 'jqmobile' ),
-			'default' => 'a'
-		),
-		'post' => array(
-			'label' => __( 'Post Teaser', 'jqmobile' ),
-			'default' => 'c'
-		),
-		'sticky' => array(
-			'label' => __( 'Sticky Post', 'jqmobile' ),
-			'default' => 'b'
-		),
-		'widget' => array(
-			'label' => __( 'Widget', 'jqmobile' ),
-			'default' => 'c'
-		),
-		'widget_content' => array(
-			'label' => __( 'Widget Content', 'jqmobile' ),
-			'default' => 'c'
-		),
-		'comment' => array(
-			'label' => __( 'Comments', 'jqmobile' ),
-			'default' => 'c'
-		),
-		'form_comment' => array(
-			'label' => __( 'Comment Form', 'jqmobile' ),
-			'default' => 'c'
-		),
-	);
-
-	return apply_filters( 'jqmobile_mobile_layouts', $layout_options );
-}
-
-function jqmobile_get_theme_options() {;
-	return get_option( 'jqmobile_theme_options', jqmobile_get_default_theme_options() );
-}
-
 function jqmobile_get_ui($key = '') {
 	static $ui_options;
 
@@ -90,8 +24,6 @@ function jqmobile_ui($key = '') {
 }
 
 function jquerymobile_enqueue_script() {
-	wp_enqueue_script('theme-script', get_template_directory_uri().'/script.js', array('jquery'));
-	wp_enqueue_script('jquerymobile', 'http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js', array('jquery'));
 }
 
 function jquerymobile_enqueue_style() {
