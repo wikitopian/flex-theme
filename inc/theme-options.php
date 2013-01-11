@@ -3,10 +3,10 @@
  * Theme Options
  */
 
-function jqmobile_admin_enqueue_scripts( $hook_suffix ) {
-	wp_enqueue_style( 'jqmobile-theme-options', get_template_directory_uri() . '/inc/theme-options.css', false, '2011-04-28' );
-}
-add_action( 'admin_print_styles-appearance_page_theme_options', 'jqmobile_admin_enqueue_scripts' );
+add_action(
+	'admin_print_styles-appearance_page_theme_options',
+	array( &$this, 'do_admin_print_styles' )
+);
 
 function jqmobile_theme_options_init() {
 	if ( false === jqmobile_get_theme_options() )

@@ -1,6 +1,7 @@
 <?php
 
 require_once( 'inc/flex-theme.php' );
+require_once( 'inc/flex-theme-options.php' );
 
 require( dirname( __FILE__ ) . '/inc/classes.php' );
 
